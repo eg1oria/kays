@@ -1,0 +1,37 @@
+@startuml
+title Deployment Diagram - Edge AI Conveyor Monitoring
+
+node "Production Line" as Line {
+  node "Production Line Cameras" as Cameras
+}
+
+node "Edge Server\nEdge Computing" as Edge {
+  component "Video Stream Processor" as VSP
+  component "AI Inference Service\nComputer Vision Model" as AIS
+  component "Robot Command Service" as RCS
+}
+
+node "Robot Controller" as RC
+node "Robot Manipulator" as Robot
+database "Central Database" as DB
+
+node "Operator Workstation" as Workstation {
+  artifact "Operator Web Dashboard" as Dashboard
+}
+
+Cameras --> VSP : Video Stream
+VSP --> AIS : Frames
+AIS --> RCS : Defect event
+RCS --> RC : Control command
+RC --> Robot : Remove defective item
+
+AIS --> DB : Defect image + metadata
+RCS --> DB : Action result
+DB --> Dashboard : Analytics and reports
+Dashboard --> DB : Query history
+
+note right of Edge
+Edge Computing нужен для минимальной задержки
+и обработки видео рядом с производственной линией.
+end note
+@enduml

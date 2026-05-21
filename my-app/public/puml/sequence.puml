@@ -1,0 +1,29 @@
+@startuml
+title Sequence Diagram - Defect Detection Flow
+autonumber
+
+actor "Оператор" as Operator
+participant "Камера" as Camera
+participant "ИИ-модуль\nComputer Vision" as AI
+participant "Robot Controller" as Controller
+participant "Робот-манипулятор" as Robot
+database "Central Database" as DB
+participant "Operator Dashboard" as Dashboard
+
+Camera -> AI : Передать изображение / Video Stream
+activate AI
+AI -> AI : Проанализировать кадр
+AI -> AI : Обнаружить дефект
+AI -> Controller : Отправить команду удаления
+deactivate AI
+
+Controller -> Robot : Активировать манипулятор
+activate Robot
+Robot -> Robot : Удалить продукт с конвейера
+Robot --> Controller : Статус удаления
+deactivate Robot
+
+Controller -> DB : Записать событие, фото и тип дефекта
+DB -> Dashboard : Обновить статистику и отчет
+Dashboard -> Operator : Показать уведомление
+@enduml
