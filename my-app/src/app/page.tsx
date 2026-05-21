@@ -1,187 +1,184 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const architecture = [
   {
-    title: "Camera",
-    label: "01",
-    accent: "cyan",
-    description: "захватывает видеопоток",
+    title: 'Camera',
+    label: '01',
+    accent: 'cyan',
+    description: 'захватывает видеопоток',
     detail:
-      "Промышленные камеры фиксируют каждый продукт на линии и передают кадры в потоковом режиме.",
+      'Промышленные камеры фиксируют каждый продукт на линии и передают кадры в потоковом режиме.',
   },
   {
-    title: "Edge AI Module",
-    label: "02",
-    accent: "violet",
-    description: "анализирует кадры и ищет дефекты",
-    detail:
-      "ИИ-модель рядом с конвейером выполняет inference без задержек облачной передачи.",
+    title: 'Edge AI Module',
+    label: '02',
+    accent: 'violet',
+    description: 'анализирует кадры и ищет дефекты',
+    detail: 'ИИ-модель рядом с конвейером выполняет inference без задержек облачной передачи.',
   },
   {
-    title: "Robot Manipulator",
-    label: "03",
-    accent: "blue",
-    description: "удаляет бракованный продукт",
-    detail:
-      "Манипулятор получает команду и синхронно убирает товар с дефектом с движущейся линии.",
+    title: 'Robot Manipulator',
+    label: '03',
+    accent: 'blue',
+    description: 'удаляет бракованный продукт',
+    detail: 'Манипулятор получает команду и синхронно убирает товар с дефектом с движущейся линии.',
   },
   {
-    title: "Central Database",
-    label: "04",
-    accent: "cyan",
-    description: "хранит события, фото дефектов и статистику",
+    title: 'Central Database',
+    label: '04',
+    accent: 'cyan',
+    description: 'хранит события, фото дефектов и статистику',
     detail:
-      "База данных сохраняет историю проверок, изображения брака, типы ошибок и производственные метрики.",
+      'База данных сохраняет историю проверок, изображения брака, типы ошибок и производственные метрики.',
   },
   {
-    title: "Operator Dashboard",
-    label: "05",
-    accent: "violet",
-    description: "показывает состояние линии и уведомления",
+    title: 'Operator Dashboard',
+    label: '05',
+    accent: 'violet',
+    description: 'показывает состояние линии и уведомления',
     detail:
-      "Веб-интерфейс помогает оператору контролировать линию, отчеты и критические уведомления.",
+      'Веб-интерфейс помогает оператору контролировать линию, отчеты и критические уведомления.',
   },
 ];
 
 const useCaseActors = [
   {
-    actor: "Камера",
-    role: "Внешний источник данных",
-    cases: ["Передать видеопоток"],
+    actor: 'Камера',
+    role: 'Внешний источник данных',
+    cases: ['Передать видеопоток'],
   },
   {
-    actor: "ИИ-модуль",
-    role: "Интеллектуальная обработка",
-    cases: ["Проанализировать изображение", "Обнаружить дефект"],
+    actor: 'ИИ-модуль',
+    role: 'Интеллектуальная обработка',
+    cases: ['Проанализировать изображение', 'Обнаружить дефект'],
   },
   {
-    actor: "Робот-манипулятор",
-    role: "Исполнительное устройство",
-    cases: ["Отправить команду роботу", "Удалить товар с конвейера"],
+    actor: 'Робот-манипулятор',
+    role: 'Исполнительное устройство',
+    cases: ['Отправить команду роботу', 'Удалить товар с конвейера'],
   },
   {
-    actor: "Оператор",
-    role: "Контроль и отчетность",
-    cases: ["Просмотреть отчёт"],
+    actor: 'Оператор',
+    role: 'Контроль и отчетность',
+    cases: ['Просмотреть отчёт'],
   },
 ];
 
 const sequence = [
   {
-    step: "01",
-    source: "Камера",
-    title: "Камера фиксирует продукт",
-    description: "Сенсор получает четкий кадр товара в зоне контроля качества.",
+    step: '01',
+    source: 'Камера',
+    title: 'Камера фиксирует продукт',
+    description: 'Сенсор получает четкий кадр товара в зоне контроля качества.',
   },
   {
-    step: "02",
-    source: "Camera Stream",
-    title: "Изображение передаётся в ИИ-модуль",
-    description: "Кадр отправляется на edge-узел по локальной сети линии.",
+    step: '02',
+    source: 'Camera Stream',
+    title: 'Изображение передаётся в ИИ-модуль',
+    description: 'Кадр отправляется на edge-узел по локальной сети линии.',
   },
   {
-    step: "03",
-    source: "Edge AI",
-    title: "ИИ анализирует кадр",
-    description: "Модель Computer Vision выделяет признаки, контуры и аномалии поверхности.",
+    step: '03',
+    source: 'Edge AI',
+    title: 'ИИ анализирует кадр',
+    description: 'Модель Computer Vision выделяет признаки, контуры и аномалии поверхности.',
   },
   {
-    step: "04",
-    source: "Defect Detection",
-    title: "ИИ обнаруживает дефект",
-    description: "Система присваивает класс дефекта и уровень уверенности модели.",
+    step: '04',
+    source: 'Defect Detection',
+    title: 'ИИ обнаруживает дефект',
+    description: 'Система присваивает класс дефекта и уровень уверенности модели.',
   },
   {
-    step: "05",
-    source: "Robot Command",
-    title: "Команда отправляется роботу",
-    description: "Контроллер получает точное время и позицию удаления товара.",
+    step: '05',
+    source: 'Robot Command',
+    title: 'Команда отправляется роботу',
+    description: 'Контроллер получает точное время и позицию удаления товара.',
   },
   {
-    step: "06",
-    source: "Manipulator",
-    title: "Робот удаляет продукт с конвейера",
-    description: "Манипулятор синхронизируется со скоростью линии и убирает брак.",
+    step: '06',
+    source: 'Manipulator',
+    title: 'Робот удаляет продукт с конвейера',
+    description: 'Манипулятор синхронизируется со скоростью линии и убирает брак.',
   },
   {
-    step: "07",
-    source: "Database",
-    title: "Событие записывается в базу данных",
-    description: "Сохраняются фото, тип дефекта, время, линия и результат действия.",
+    step: '07',
+    source: 'Database',
+    title: 'Событие записывается в базу данных',
+    description: 'Сохраняются фото, тип дефекта, время, линия и результат действия.',
   },
   {
-    step: "08",
-    source: "Dashboard",
-    title: "Оператор получает уведомление",
-    description: "На панели появляется событие, статус линии и ссылка на отчет.",
+    step: '08',
+    source: 'Dashboard',
+    title: 'Оператор получает уведомление',
+    description: 'На панели появляется событие, статус линии и ссылка на отчет.',
   },
 ];
 
 const deployment = [
-  "Production Line Cameras",
-  "Edge Server",
-  "AI Inference Service",
-  "Robot Controller",
-  "Central Database",
-  "Operator Web Dashboard",
+  'Production Line Cameras',
+  'Edge Server',
+  'AI Inference Service',
+  'Robot Controller',
+  'Central Database',
+  'Operator Web Dashboard',
 ];
 
 const plantUmlDiagrams = [
   {
-    title: "Use Case Diagram",
-    label: "Use Case",
-    image: "/puml/use-case.svg",
+    title: 'Use Case Diagram',
+    label: 'Use Case',
+    image: '/puml/use-case.svg',
     width: 1465,
     height: 336,
     description:
-      "Отображает взаимодействие камеры, ИИ-модуля, робота-манипулятора и оператора с системой мониторинга.",
+      'Отображает взаимодействие камеры, ИИ-модуля, робота-манипулятора и оператора с системой мониторинга.',
   },
   {
-    title: "Sequence Diagram",
-    label: "Sequence",
-    image: "/puml/sequence.svg",
+    title: 'Sequence Diagram',
+    label: 'Sequence',
+    image: '/puml/sequence.svg',
     width: 1487,
     height: 551,
     description:
-      "Показывает процесс от фиксации продукта камерой до удаления брака и уведомления оператора.",
+      'Показывает процесс от фиксации продукта камерой до удаления брака и уведомления оператора.',
   },
   {
-    title: "Deployment Diagram",
-    label: "Deployment",
-    image: "/puml/deployment.svg",
+    title: 'Deployment Diagram',
+    label: 'Deployment',
+    image: '/puml/deployment.svg',
     width: 840,
     height: 887,
     description:
-      "Описывает связь камер, edge-сервера, AI inference, контроллера робота, базы данных и веб-панели.",
+      'Описывает связь камер, edge-сервера, AI inference, контроллера робота, базы данных и веб-панели.',
   },
 ];
 
 const benefits = [
-  "Снижение человеческих ошибок",
-  "Проверка в реальном времени",
-  "Быстрое удаление брака",
-  "Сбор статистики дефектов",
-  "Повышение качества продукции",
-  "Масштабируемость на несколько линий",
+  'Снижение человеческих ошибок',
+  'Проверка в реальном времени',
+  'Быстрое удаление брака',
+  'Сбор статистики дефектов',
+  'Повышение качества продукции',
+  'Масштабируемость на несколько линий',
 ];
 
 const stats = [
-  { value: "< 80 ms", label: "целевая задержка inference" },
-  { value: "24/7", label: "контроль без ручных смен" },
-  { value: "Edge", label: "обработка рядом с линией" },
+  { value: '< 80 ms', label: 'целевая задержка inference' },
+  { value: '24/7', label: 'контроль без ручных смен' },
+  { value: 'Edge', label: 'обработка рядом с линией' },
 ];
 
 const accentClasses = {
-  cyan: "border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-cyan-500/20",
-  violet:
-    "border-violet-300/25 bg-violet-300/10 text-violet-100 shadow-violet-500/20",
-  blue: "border-blue-300/25 bg-blue-300/10 text-blue-100 shadow-blue-500/20",
+  cyan: 'border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-cyan-500/20',
+  violet: 'border-violet-300/25 bg-violet-300/10 text-violet-100 shadow-violet-500/20',
+  blue: 'border-blue-300/25 bg-blue-300/10 text-blue-100 shadow-blue-500/20',
 };
 
 function Section({
   id,
   children,
-  className = "",
+  className = '',
   delay = 0,
 }: {
   id?: string;
@@ -193,8 +190,7 @@ function Section({
     <section
       id={id}
       className={`fade-up mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24 ${className}`}
-      style={{ animationDelay: `${delay}ms` }}
-    >
+      style={{ animationDelay: `${delay}ms` }}>
       {children}
     </section>
   );
@@ -214,27 +210,16 @@ function SectionHeader({
       <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-        {title}
-      </h2>
-      <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
-        {description}
-      </p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
+      <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">{description}</p>
     </div>
   );
 }
 
-function Panel({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+function Panel({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-[8px] border border-white/10 bg-white/[0.045] shadow-2xl shadow-cyan-950/20 backdrop-blur ${className}`}
-    >
+      className={`rounded-[8px] border border-white/10 bg-white/[0.045] shadow-2xl shadow-cyan-950/20 backdrop-blur ${className}`}>
       {children}
     </div>
   );
@@ -253,9 +238,7 @@ function HeroVisual() {
       <div className="relative rounded-[8px] border border-cyan-200/10 bg-slate-950/80 p-4">
         <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-3">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-cyan-300">
-              Hyper Technology
-            </p>
+            <p className="text-xs uppercase tracking-[0.22em] text-cyan-300">Hyper Technology</p>
             <p className="mt-1 text-sm text-slate-300">Line A3 Vision Core</p>
           </div>
           <div className="flex items-center gap-2 rounded-[8px] border border-emerald-300/20 bg-emerald-300/10 px-3 py-1.5 text-xs font-semibold text-emerald-200">
@@ -292,12 +275,9 @@ function HeroVisual() {
             {stats.map((item) => (
               <div
                 key={item.label}
-                className="rounded-[8px] border border-white/10 bg-white/[0.04] p-4"
-              >
+                className="rounded-[8px] border border-white/10 bg-white/[0.04] p-4">
                 <p className="text-2xl font-semibold text-white">{item.value}</p>
-                <p className="mt-1 text-sm leading-6 text-slate-400">
-                  {item.label}
-                </p>
+                <p className="mt-1 text-sm leading-6 text-slate-400">{item.label}</p>
               </div>
             ))}
             <div className="rounded-[8px] border border-red-300/20 bg-red-400/10 p-4">
@@ -305,8 +285,7 @@ function HeroVisual() {
                 Problem signal
               </p>
               <p className="mt-2 text-sm leading-6 text-slate-200">
-                Ручная проверка брака медленная и неточная, особенно при высокой
-                скорости конвейера.
+                Ручная проверка брака медленная и неточная, особенно при высокой скорости конвейера.
               </p>
             </div>
           </div>
@@ -316,15 +295,10 @@ function HeroVisual() {
   );
 }
 
-function ArchitectureCard({
-  item,
-}: {
-  item: (typeof architecture)[number];
-}) {
+function ArchitectureCard({ item }: { item: (typeof architecture)[number] }) {
   return (
     <div
-      className={`rounded-[8px] border p-5 shadow-2xl ${accentClasses[item.accent as keyof typeof accentClasses]}`}
-    >
+      className={`rounded-[8px] border p-5 shadow-2xl ${accentClasses[item.accent as keyof typeof accentClasses]}`}>
       <div className="mb-5 flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] opacity-70">
           {item.label}
@@ -332,9 +306,7 @@ function ArchitectureCard({
         <span className="h-2.5 w-2.5 rounded-full bg-current shadow-[0_0_18px_currentColor]" />
       </div>
       <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-      <p className="mt-2 text-sm font-medium text-cyan-100/90">
-        {item.description}
-      </p>
+      <p className="mt-2 text-sm font-medium text-cyan-100/90">{item.description}</p>
       <p className="mt-4 text-sm leading-6 text-slate-300">{item.detail}</p>
     </div>
   );
@@ -360,8 +332,7 @@ function UseCaseDiagram() {
               actor.cases.map((useCase) => (
                 <div
                   key={useCase}
-                  className="rounded-full border border-white/10 bg-white/[0.055] px-4 py-3 text-center text-sm font-medium text-slate-100 shadow-[0_0_26px_rgba(34,211,238,0.08)]"
-                >
+                  className="rounded-full border border-white/10 bg-white/[0.055] px-4 py-3 text-center text-sm font-medium text-slate-100 shadow-[0_0_26px_rgba(34,211,238,0.08)]">
                   {useCase}
                 </div>
               )),
@@ -379,14 +350,7 @@ function UseCaseDiagram() {
   );
 }
 
-function ActorCard({
-  actor,
-  role,
-}: {
-  actor: string;
-  role: string;
-  cases: string[];
-}) {
+function ActorCard({ actor, role }: { actor: string; role: string; cases: string[] }) {
   return (
     <div className="rounded-[8px] border border-violet-300/20 bg-violet-300/10 p-4">
       <div className="mb-3 flex items-center gap-3">
@@ -418,12 +382,8 @@ function SequenceDiagram() {
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-200">
                   {item.source}
                 </p>
-                <h3 className="mt-2 text-lg font-semibold text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
-                  {item.description}
-                </p>
+                <h3 className="mt-2 text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-300">{item.description}</p>
               </div>
             </div>
           ))}
@@ -441,7 +401,7 @@ function DeploymentDiagram() {
           <div key={node} className="contents">
             <div className="rounded-[8px] border border-blue-300/20 bg-blue-300/10 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
-                Node {String(index + 1).padStart(2, "0")}
+                Node {String(index + 1).padStart(2, '0')}
               </p>
               <p className="mt-2 text-base font-semibold text-white">{node}</p>
             </div>
@@ -452,23 +412,18 @@ function DeploymentDiagram() {
 
       <div className="mt-7 grid gap-4 md:grid-cols-2">
         <div className="rounded-[8px] border border-cyan-300/20 bg-cyan-300/10 p-5">
-          <h3 className="text-lg font-semibold text-white">
-            Почему Edge Computing
-          </h3>
+          <h3 className="text-lg font-semibold text-white">Почему Edge Computing</h3>
           <p className="mt-3 text-sm leading-6 text-slate-300">
-            Edge Computing нужен для минимальной задержки и обработки видео рядом
-            с производственной линией. Кадры не ждут отправки в удаленное облако,
-            поэтому робот получает команду вовремя.
+            Edge Computing нужен для минимальной задержки и обработки видео рядом с производственной
+            линией. Кадры не ждут отправки в удаленное облако, поэтому робот получает команду
+            вовремя.
           </p>
         </div>
         <div className="rounded-[8px] border border-violet-300/20 bg-violet-300/10 p-5">
-          <h3 className="text-lg font-semibold text-white">
-            Роль центральной базы
-          </h3>
+          <h3 className="text-lg font-semibold text-white">Роль центральной базы</h3>
           <p className="mt-3 text-sm leading-6 text-slate-300">
-            Центральная база хранит историю дефектов, аналитику и отчёты. Эти
-            данные помогают находить проблемные партии, смены, линии и типы
-            производственных отклонений.
+            Центральная база хранит историю дефектов, аналитику и отчёты. Эти данные помогают
+            находить проблемные партии, смены, линии и типы производственных отклонений.
           </p>
         </div>
       </div>
@@ -485,12 +440,8 @@ function PlantUmlSource() {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
               {diagram.label}
             </p>
-            <h3 className="mt-3 text-xl font-semibold text-white">
-              {diagram.title}
-            </h3>
-            <p className="mt-3 text-sm leading-6 text-slate-300">
-              {diagram.description}
-            </p>
+            <h3 className="mt-3 text-xl font-semibold text-white">{diagram.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-300">{diagram.description}</p>
           </div>
           <div className="bg-slate-950/50 p-4 sm:p-6">
             <div className="rounded-[8px] border border-white/10 bg-white p-3 sm:p-5">
@@ -507,8 +458,7 @@ function PlantUmlSource() {
           <div className="border-t border-white/10 p-5">
             <a
               href={diagram.image}
-              className="inline-flex h-10 items-center justify-center rounded-[8px] bg-cyan-300 px-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
-            >
+              className="inline-flex h-10 items-center justify-center rounded-[8px] bg-cyan-300 px-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200">
               Открыть SVG
             </a>
           </div>
@@ -562,21 +512,19 @@ export default function Home() {
             AI Vision Conveyor Monitoring System
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-            Система компьютерного зрения для автоматического обнаружения
-            дефектов на производственном конвейере
+            Система компьютерного зрения для автоматического обнаружения дефектов на
+            производственном конвейере
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#architecture"
-              className="inline-flex h-12 items-center justify-center rounded-[8px] bg-cyan-300 px-6 text-sm font-semibold text-slate-950 shadow-[0_0_28px_rgba(34,211,238,0.35)] transition hover:bg-cyan-200"
-            >
+              className="inline-flex h-12 items-center justify-center rounded-[8px] bg-cyan-300 px-6 text-sm font-semibold text-slate-950 shadow-[0_0_28px_rgba(34,211,238,0.35)] transition hover:bg-cyan-200">
               Посмотреть архитектуру
             </a>
             <a
               href="#diagrams"
-              className="inline-flex h-12 items-center justify-center rounded-[8px] border border-white/15 bg-white/[0.04] px-6 text-sm font-semibold text-white transition hover:border-violet-300/50 hover:bg-violet-300/10"
-            >
+              className="inline-flex h-12 items-center justify-center rounded-[8px] border border-white/15 bg-white/[0.04] px-6 text-sm font-semibold text-white transition hover:border-violet-300/50 hover:bg-violet-300/10">
               Диаграммы
             </a>
           </div>
@@ -586,8 +534,8 @@ export default function Home() {
               Ключевая проблема
             </p>
             <p className="mt-3 text-base leading-7 text-slate-200">
-              Ручная проверка брака медленная и неточная: оператор может устать,
-              пропустить дефект или неправильно оценить качество изделия.
+              Ручная проверка брака медленная и неточная: оператор может устать, пропустить дефект
+              или неправильно оценить качество изделия.
             </p>
           </div>
         </div>
@@ -607,9 +555,9 @@ export default function Home() {
               Problem / Situation
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-300">
-              На заводе товары проверяются вручную, из-за человеческого фактора
-              возникают ошибки. Камеры уже установлены, но они только записывают
-              видео и не умеют автоматически находить дефекты.
+              На заводе товары проверяются вручную, из-за человеческого фактора возникают ошибки.
+              Камеры уже установлены, но они только записывают видео и не умеют автоматически
+              находить дефекты.
             </p>
           </Panel>
 
@@ -621,9 +569,9 @@ export default function Home() {
               Реальная цель системы
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-300">
-              Система должна обрабатывать видеопоток в реальном времени,
-              распознавать дефекты с помощью Computer Vision / AI и передавать
-              команды роботу-манипулятору для удаления бракованного товара.
+              Система должна обрабатывать видеопоток в реальном времени, распознавать дефекты с
+              помощью Computer Vision / AI и передавать команды роботу-манипулятору для удаления
+              бракованного товара.
             </p>
           </Panel>
         </div>
@@ -691,14 +639,11 @@ export default function Home() {
           {benefits.map((benefit, index) => (
             <div
               key={benefit}
-              className="rounded-[8px] border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-cyan-950/10"
-            >
+              className="rounded-[8px] border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-cyan-950/10">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
-                Benefit {String(index + 1).padStart(2, "0")}
+                Benefit {String(index + 1).padStart(2, '0')}
               </p>
-              <h3 className="mt-4 text-xl font-semibold leading-7 text-white">
-                {benefit}
-              </h3>
+              <h3 className="mt-4 text-xl font-semibold leading-7 text-white">{benefit}</h3>
             </div>
           ))}
         </div>
